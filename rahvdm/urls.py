@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from rol import views as views_rol
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    path('rol', views_rol.rol, name='rol'),
+    path('create_roles', views_rol.create_roles, name='create_roles'),
+    path('roles/edit/<int:roles_idrol>/', views_rol.roles_edit, name='roles_edit'),
+    
+
 ]

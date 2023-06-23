@@ -1,0 +1,21 @@
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Tipo de Rol</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for rol in roles %}
+    <tr>
+      <td>{{ rol.idrol }}</td>
+      <td>{{ rol.typerol }}</td>
+      <td>
+        <a href="{% url 'roles_edit' rol.idrol %}">Editar</a>
+
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>

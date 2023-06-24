@@ -1,0 +1,30 @@
+<table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Rol</th>
+        <th>Identificacion</th>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Correo</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for teacher in teachers %}
+      <tr>
+        <td>{{ teacher.idteacher }}</td>
+        <td>{{ teacher.typerol }}</td>
+        <td>{{ teacher.identification }}</td>
+        <td>{{ teacher.names }}</td>
+        <td>{{ teacher.lastnames }}</td>
+        <td>{{ teacher.email }}</td>
+        <td>
+          <a href="{% url 'teachers_edit' teacher.idteacher %}">Editar</a>
+  
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  

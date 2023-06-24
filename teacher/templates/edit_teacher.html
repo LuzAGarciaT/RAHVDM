@@ -1,0 +1,27 @@
+<form method="POST" action="{% url 'teachers_edit'  teacher.idteacher %}">
+
+    {% csrf_token %}
+    <div>
+    <label class="form-label" for="{{ form.typerol.id_for_label }}">Rol</label>
+    {{ form.typerol }}
+  </div>
+  <div>
+    <label class="form-label" for="{{ form.identification.id_for_label }}">Identificacion</label>
+    {{ form.identification }}
+  </div>
+  <div>
+    <label class="form-label" for="{{ form.names.id_for_label }}">Nombres</label>
+    {{ form.names }}
+  </div>
+  <div>
+    <label class="form-label" for="{{ form.lastnames.id_for_label }}">Apellidos</label>
+    {{ form.lastnames }}
+  </div>
+  <div>
+    <label class="form-label" for="{{ form.email.id_for_label }}">Email</label>
+    {{ form.email }}
+  </div>
+
+    <button type="submit">Guardar</button>
+  </form>
+  

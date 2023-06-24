@@ -16,6 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from rol import views as views_rol
+from teacher import views as views_teacher
+from student import views as views_student
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
@@ -23,5 +26,14 @@ urlpatterns = [
     path('create_roles', views_rol.create_roles, name='create_roles'),
     path('roles/edit/<int:roles_idrol>/', views_rol.roles_edit, name='roles_edit'),
     
+    #TEACHER
+    path('teacher', views_teacher.teacher, name='teacher'),
+    path('create_teachers', views_teacher.create_teachers, name='create_teachers'),
+    path('teachers/edit/<int:teachers_idteacher>/', views_teacher.teachers_edit, name='teachers_edit'),
+
+     #TEACHER
+    path('student', views_student.student, name='student'),
+    path('create_student', views_student.create_students, name='create_student'),
+    path('student/edit/<int:student_idstudent>/', views_student.students_edit, name='student_edit'),
 
 ]

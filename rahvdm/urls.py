@@ -17,10 +17,22 @@ from django.contrib import admin
 from django.urls import path
 from rol import views as views_rol
 from teacher import views as views_teacher
-from student import views as views_student
+
+from logros import views as views_logro
+# urls.py
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+# ...
+
 
 urlpatterns = [
+
+    path('', views_rol.inicio, name='inicio'),
     path('admin/', admin.site.urls),
+
+    
 
     path('rol', views_rol.rol, name='rol'),
     path('create_roles', views_rol.create_roles, name='create_roles'),
@@ -31,9 +43,12 @@ urlpatterns = [
     path('create_teachers', views_teacher.create_teachers, name='create_teachers'),
     path('teachers/edit/<int:teachers_idteacher>/', views_teacher.teachers_edit, name='teachers_edit'),
 
-     #TEACHER
-    path('student', views_student.student, name='student'),
-    path('create_student', views_student.create_students, name='create_student'),
-    path('student/edit/<int:student_idstudent>/', views_student.students_edit, name='student_edit'),
+    #TEACHER
+ 
+    #VIDEO
+    path('uploadlogro/', views_logro.uploadlogro, name='uploadlogro'),
+    path('logros/', views_logro.logros, name='logros'),
+   
 
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

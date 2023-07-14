@@ -4,7 +4,7 @@ from rol.models import Rol
 
 
 def inicio(request):
-    return render(request, 'inicio.html')
+    return render(request, 'templates/html/inicio.html')
 
 
 def create_roles(request):

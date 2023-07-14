@@ -1,0 +1,9 @@
+{% for logro in logros %}
+  <h2>{{ logro.nombre }}</h2>
+  <p>{{ logro.description }}</p>
+  <video controls>
+    <source src="{{logro.video.url }}" type="{{ logro.video.content_type }}">
+    Tu navegador no admite la etiqueta de video.
+  </video>
+
+{% endfor %}

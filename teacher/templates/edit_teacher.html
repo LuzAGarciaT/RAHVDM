@@ -1,27 +1,68 @@
-<form method="POST" action="{% url 'teachers_edit'  teacher.idteacher %}">
+<style>
+  .form-container {
+      max-width: 300px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
 
-    {% csrf_token %}
-    <div>
-    <label class="form-label" for="{{ form.typerol.id_for_label }}">Rol</label>
-    {{ form.typerol }}
-  </div>
-  <div>
-    <label class="form-label" for="{{ form.identification.id_for_label }}">Identificacion</label>
-    {{ form.identification }}
-  </div>
-  <div>
-    <label class="form-label" for="{{ form.names.id_for_label }}">Nombres</label>
-    {{ form.names }}
-  </div>
-  <div>
-    <label class="form-label" for="{{ form.lastnames.id_for_label }}">Apellidos</label>
-    {{ form.lastnames }}
-  </div>
-  <div>
-    <label class="form-label" for="{{ form.email.id_for_label }}">Email</label>
-    {{ form.email }}
-  </div>
+  .form-container label {
+      margin-bottom: 10px;
+      color: #666;
+  }
 
-    <button type="submit">Guardar</button>
+  .form-container input[type="text"],
+  .form-container input[type="submit"] {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      width: 100%;
+      box-sizing: border-box;
+  }
+
+  .form-container input[type="text"] {
+      margin-bottom: 15px;
+  }
+
+  .form-container input[type="submit"] {
+      background-color: #66bb6a;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+  }
+
+  .form-container input[type="submit"]:hover {
+      background-color: #4caf50;
+  }
+</style>
+
+<div class="form-container">
+  <form method="POST" action="{% url 'teachers_edit' teacher.idteacher %}">
+      {% csrf_token %}
+      <div>
+          <label class="form-label" for="{{ form.typerol.id_for_label }}">Rol</label>
+          {{ form.typerol }}
+      </div>
+      <div>
+          <label class="form-label" for="{{ form.identification.id_for_label }}">Identificación</label>
+          {{ form.identification }}
+      </div>
+      <div>
+          <label class="form-label" for="{{ form.names.id_for_label }}">Nombres</label>
+          {{ form.names }}
+      </div>
+      <div>
+          <label class="form-label" for="{{ form.lastnames.id_for_label }}">Apellidos</label>
+          {{ form.lastnames }}
+      </div>
+      <div>
+          <label class="form-label" for="{{ form.email.id_for_label }}">Email</label>
+          {{ form.email }}
+      </div>
+
+      <button type="submit">Guardar</button>
   </form>
-  
+</div>

@@ -1,117 +1,69 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+
+
 <style>
-  body {
-      margin: 20px;
-      background-color: #f8f8f8;
-      font-family: Arial, sans-serif;
-  }
+    .content-wrapper {
+        padding: 20px; /* Agregar un espacio de 20px en todos los lados del contenido */
+    }
 
-  .navbar {
-      background-color: #1976D2;
-      color: #fff;
-      padding: 10px;
-      margin-bottom: 20px;
-  }
+    .card-datatable {
+        margin-top: 20px; /* Agregar espacio en la parte superior de la tabla */
+    }
 
-  .navbar ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-  }
+    .text-center-with-space {
+        margin-top: 60px; /* Agregar espacio en la parte delantera del texto centrado */
+    }
 
-  .navbar li {
-      display: inline-block;
-      margin-right: 20px;
-  }
-
-  .navbar a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 16px;
-  }
-
-  .navbar a:hover {
-      color: #BBDEFB;
-  }
-
-  .table-container {
-      margin-top: 20px;
-  }
-
-  table {
-      width: 100%;
-      border-collapse: collapse;
-      background-color: #fff;
-      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  }
-
-  table thead {
-      background-color: #f1f1f1;
-  }
-
-  table th,
-  table td {
-      padding: 10px;
-      text-align: left;
-      border-bottom: 1px solid #ddd;
-  }
-
-  table th {
-      color: #333;
-  }
-
-  table td {
-      color: #666;
-  }
-
-  table a {
-      color: #66bb6a;
-      text-decoration: none;
-  }
-
-  table a:hover {
-      color: #4caf50;
-  }
+    /* Estilos adicionales para el botón de "Crear profesor" si es necesario */
 </style>
 
-<div class="navbar">
-  <ul>
-    <li><a href="#">Inicio</a></li>
-    <li><a href="{% url 'rol' %}">Rol</a></li>
-    <li><a href="{% url 'teacher' %}">Profesores</a></li>
-    <li><a href="{% url 'student' %}">Estudiantes</a></li>
-  </ul>
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Otros scripts y estilos -->
+  </head>
+
+<div class="content-wrapper">
+    <div class="container-xxl flex-grow-1 container-p-y">
+
+        <h2 class="text-center text-center-with-space">Usuarios Creados</h2>
+
+        <a href="{% url 'create_teachers' %}" type="button" class="btn btn-xs btn-info">
+            Crear un nuevo usuario
+        </a>
+
+       
+        <div class="card-datatable table-responsive pt-0">
+            <table class="table table-hover">
+                <thead>
+                    <tr class="table-info">
+                        <th>Id</th>
+                        <th>Rol</th>
+                        <th>Identificación</th>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Correo</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for teacher in teachers %}
+                    <tr>
+                        <td>{{ teacher.idteacher }}</td>
+                        <td>{{ teacher.typerol }}</td>
+                        <td>{{ teacher.identification }}</td>
+                        <td>{{ teacher.names }}</td>
+                        <td>{{ teacher.lastnames }}</td>
+                        <td>{{ teacher.email }}</td>
+                        <td>
+                            <a href="{% url 'teachers_edit' teacher.idteacher %}">Editar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
-
-<a href="{% url 'create_teachers'  %}">Crear</a>
-
-
-<div class="table-container">
-  <table>
-      <thead>
-          <tr>
-              <th>Id</th>
-              <th>Rol</th>
-              <th>Identificación</th>
-              <th>Nombre</th>
-              <th>Apellidos</th>
-              <th>Correo</th>
-              <th></th>
-          </tr>
-      </thead>
-      <tbody>
-          {% for teacher in teachers %}
-          <tr>
-              <td>{{ teacher.idteacher }}</td>
-              <td>{{ teacher.typerol }}</td>
-              <td>{{ teacher.identification }}</td>
-              <td>{{ teacher.names }}</td>
-              <td>{{ teacher.lastnames }}</td>
-              <td>{{ teacher.email }}</td>
-              <td>
-                  <a href="{% url 'teachers_edit' teacher.idteacher %}">Editar</a>
-              </td>
-          </tr>
-          {% endfor %}
-      </tbody>
-  </table>
-</div>
+{% endblock %}

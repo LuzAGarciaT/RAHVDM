@@ -1,9 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+
+<style>
+  /* Estilos para los videos */
+  .video-container {
+    width: 650px; /* Ancho específico para el video */
+    margin-top: 50px;
+    margin-left: 40px;
+    margin-right: 40px;/* Centrar el video horizontalmente y agregar espacio en la parte superior e inferior */
+    display: flex; /* Usamos flexbox para colocar elementos en fila */
+  }
+
+  .video-info {
+    margin-left: 35px;
+    margin-bottom: 10px; /* Espacio entre el video y la información */
+    flex: 1; /* Hace que la información ocupe todo el espacio disponible en la fila */
+  }
+
+  video {
+    width: 100%; /* Ancho del video al 100% del contenedor */
+    height: auto; /* Altura automática para mantener la relación de aspecto */
+  }
+
+  .upload-button {
+    margin-top: 80px;
+    margin-left: 40px; /* Margen para el botón "Subir video" */
+  }
+</style>
+
+<div class="upload-button">
+  <a href="{% url 'uploadlogro' %}" type="button" class="btn btn-xs btn-info">
+    Subir video
+  </a>
+</div>
+
 {% for logro in logros %}
-  <h2>{{ logro.nombre }}</h2>
-  <p>{{ logro.description }}</p>
+<div class="video-container">
   <video controls>
-    <source src="{{logro.video.url }}" type="{{ logro.video.content_type }}">
+    <source src="{{ logro.video.url }}" type="{{ logro.video.content_type }}">
     Tu navegador no admite la etiqueta de video.
   </video>
-
+  <div class="video-info">
+    <h1>{{ logro.nombre }}</h1>
+    <h3>{{ logro.description }}</h3>
+  </div>
+</div>
 {% endfor %}
+
+{% endblock %}

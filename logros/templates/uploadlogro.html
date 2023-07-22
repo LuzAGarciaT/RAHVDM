@@ -1,6 +1,105 @@
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Guardar</button>
-  </form>
-  
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+
+<style>
+    .content-wrapper {
+        padding: 20px; /* Agregar un espacio de 20px en todos los lados del contenido */
+    }
+
+    .centered-button {
+        display: flex;
+        justify-content: center;
+    }
+
+    .text-center-with-space {
+        margin-top: 60px; /* Agregar espacio en la parte delantera del texto centrado */
+    }
+    
+    /* Estilo para los cuadros de texto */
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 6px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    /* Estilo para el botón */
+    .btn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .btn-info {
+        background-color: #2196F3;
+    }
+
+</style>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Otros scripts y estilos -->
+</head>
+
+<div class="content-wrapper">
+    <div class="container-xxl flex-grow-1 container-p-y">
+
+        <h2 class="text-center text-center-with-space">Subir Video</h2>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <div class="contact_box">
+                        <div class="form-container">
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+
+                                <!-- Primera columna de dos campos -->
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="form-label" for="{{ form.nombre.id_for_label }}">Nombre Video</label>
+                                        {{ form.nombre }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label" for="{{ form.description.id_for_label }}">Descripcion</label>
+                                        {{ form.description }}
+                                    </div>
+                                </div>
+
+                                <br>
+
+                                <!-- Campo de video -->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label class="form-label" for="{{ form.video.id_for_label }}">Video</label>
+                                        <br>
+                                        {{ form.video }}
+                                    </div>
+                                </div>
+
+                                <br>
+
+                                <div class="centered-button">
+                                    <button class="btn btn-info" type="submit">Guardar</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

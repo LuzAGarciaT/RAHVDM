@@ -43,7 +43,6 @@ urlpatterns = [
     path('create_teachers', views_teacher.create_teachers, name='create_teachers'),
     path('teachers/edit/<int:teachers_idteacher>/', views_teacher.teachers_edit, name='teachers_edit'),
 
-    #TEACHER
  
     #VIDEO
     path('uploadlogro/', views_logro.uploadlogro, name='uploadlogro'),
